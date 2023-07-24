@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amine Lahmary</title>
     <style>
-        h1{
-            text-align: center;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.5em;
-        }
-        a {
-            margin-top: 2rem;
-            color: #111;
-            font-family: sans-serif;
-        }
-        .container {
-            max-width: 1020px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    :root {
+        --grid-2 : repeat(2, minmax(0,1fr));
+    }
+      h1 {
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.5em;
+      }
+      a {
+        margin-top: 2rem;
+        color: #111;
+        font-family: sans-serif;
+      }
+      .container {
+        max-width: 1020px;
+        margin: auto;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: var(--grid-2);
+      }
+      .block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Amine Lahmary</h1>
-        <a href="./projects/Grocery/">Grocery (todo) build with [JS]</a>
+  </head>
+  <body>
+    <div class="container grid-2">
+        <div class="block">
+            <h1>Amine Lahmary</h1>
+
+            <p>My name is amine.</p>
+      
+            <p>I’m a Web Developer based in Marrakech, Moroco.</p>
+      
+            <p>
+              Since 2020, I’ve been helping many clients achieve innovative things on
+              the web. I mainly work with modern tools and frameworks such as
+              Wordpress, Laravel, VueJS….
+            </p>
+      
+            <p><a href="mailto:aminelahmary@gmail.com">contact me!</a></p>
+
+        </div>
+        <div class="block">
+            <h3>Some projects</h3>
+            <a href="./projects/Grocery/">Grocery (todo) build with [JS]</a>
+        </div>
+
     </div>
-</body>
+  </body>
 </html>
