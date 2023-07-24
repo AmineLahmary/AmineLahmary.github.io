@@ -1,0 +1,232 @@
+:root {
+    --font-body: clamp(1.6rem, calc(1.6rem + ((1vw - 0.32rem) * 0.2273)), 1.8rem);
+
+    --success-color: #0f0;
+    --error-color: #f00;
+
+    --space-s: clamp(1.8rem, calc(1.8rem + ((1vw - 0.32rem) * 0.2273)), 2rem);
+    --space-xs: clamp(0.6rem, calc(0.6rem + ((1vw - 0.32rem) * 0.4545)), 1rem);
+
+    --rounded-full: 5rem;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+html {
+    font-size: 65.2%;
+    color-scheme: dark light;
+}
+
+body {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+header {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.container {
+    max-width: 102rem;
+    margin: auto;
+}
+
+header .header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-s);
+}
+header .header-container .logo{
+    color: #FFF;
+    font-size: 1.7em;
+    text-decoration: overline;
+}
+header .header-container .search-bx{
+    height: 100%;
+    font-size: 1.7em;
+    padding-bottom: calc(var(--space-xs) * 0.7);
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #555;
+}
+header .header-container .search-bx:focus{
+    outline: none;
+}
+.group-fields {
+    display: flex;
+    width: fit-content;
+    margin: 3rem auto;
+    
+}
+
+.insert-field, button {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    border: none;
+}
+
+.edit-input:focus,
+.insert-field:focus {
+    outline: none;
+}
+
+.save-btn {
+    margin-left: -2.5rem;
+    cursor: pointer;
+}
+
+.list-item {
+    margin-top: 4rem;
+    max-height: 30rem;
+    overflow-y: auto;
+    width: 70%;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+.list-item::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.list-item::-webkit-scrollbar-track {
+    width: 0.5rem;
+    background-color: #555;
+}
+
+.list-item::-webkit-scrollbar-thumb  {
+    width: 0.5rem;
+    background-color: #333;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid #444;
+}
+
+.item-row button {
+    padding: 0.5rem 2rem;
+    border: none;
+    background-color: #2d2d2d;
+    cursor: pointer;
+    font-size: 1.7rem;
+    border-radius: 2rem;
+}
+
+.actions-container {
+    width: 13%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(0,1fr));
+    gap: 1rem;
+    margin-left: auto;
+}
+
+.actions-container button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem 1.3rem;
+    background-color: #212121;
+}
+
+.actions-container button i {
+    pointer-events: none;
+}
+
+.item-name {
+    max-width: 30rem;
+    line-height: 1.5;
+}
+
+.item-name-container {
+    font-size: 1.7rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+
+.item-name-container span{
+    margin-right: 2rem;
+    opacity: 0.5;
+}
+
+.edit-input {
+    padding: .6rem 2rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: #212121;
+    width: 100%;
+}
+
+.list-item-footer {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: var(--space-xs) var(--space-s);
+    font-size: calc(var(--font-body) * 0.9);
+    margin-top: var(--space-s);
+    background-color: #212121;
+    border-radius: var(--rounded-full);
+    color: #777;
+}
+.delete-all {
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+}
+.delete-all:hover {
+    color: #f66;
+}
+/* ALERT STYLE STARTS */
+.alert {
+    position: absolute;
+    bottom: var(--space-xs);
+    background-color: #000;
+    padding: var(--space-xs) var(--space-s);
+    max-width: 30rem;
+    border: 1px solid currentColor;
+    border-left: none;
+    border-radius: 0 var(--rounded-full) var(--rounded-full) 0;
+    font-size: var(--font-body);
+    text-transform: capitalize;
+    transition: 0.2s ease-in;
+    transform: translateX(-0.5rem);
+    opacity: 0;
+}
+.alert--success {
+    color: var(--success-color);
+    transform: translateX(0);
+    opacity: 1;
+}
+.alert--error {
+    color: var(--error-color);
+    transform: translateX(0);
+    opacity: 1;
+}
+/* ALERT STYLE ENDS */
+
+

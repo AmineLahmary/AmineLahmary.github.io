@@ -1,0 +1,173 @@
+import * as support from "./support.js"
+import {Item} from "./itemClass.js"
+
+let 
+data = [
+  new Item("Winnie Boyd"),
+  new Item("Philip Garcia"),
+  new Item("Blanche Bowers"),
+],
+editFieldIsOpen = false,
+editField = document.createElement("p"),
+saveIcon = "<i class=\"fa-regular fa-floppy-disk\" style=\"color: #9f9;\"></i>";
+
+
+
+const   
+listItem        = document.querySelector(".list-item"),
+inputField      = document.querySelector(".insert-field"),
+addBtn          = document.querySelector(".save-btn"),
+itemName        = document.querySelectorAll(".item-name"),
+totalItemsLabel = document.querySelector(".total"),
+deleteAllBtn    = document.querySelector(".delete-all"),
+searchBx        = document.querySelector(".search-bx");
+
+
+// Display data
+showData(data);
+// add class edit-input to edit field (p tag)
+editField.classList.add("edit-input");
+
+function add() {
+
+  try {
+    let item = new Item();
+
+    item.name = inputField.value;
+
+    inputField.value = ""
+
+    data.push(item)
+
+    support.alertMessage('added successfully', "success")
+    
+    listItem.append(item.itemInRow())
+
+
+  } catch ({message,name}) {
+
+    support.alertMessage(message, "error")
+    
+  }
+  
+
+}
+
+function deleteItem(e) {
+
+  const itemId = e.currentTarget.getAttribute("data-id");
+
+  data = data.filter(item => item.id != itemId);
+
+  showData(data);
+
+}
+
+function edit(e) {
+
+  const itemId   = e.currentTarget.getAttribute("data-id"),
+        itemName = document.querySelector(`[data-id='${itemId}'] .item-name`),
+        editBtn  = document.querySelector(`[data-id='${itemId}'] .edit-btn`);
+  if(!editFieldIsOpen) {
+    editFieldIsOpen = true;
+    editField.textContent = itemName.innerHTML;
+    editField.setAttribute("contenteditable",'')
+    itemName.innerHTML = editField.outerHTML;
+    editBtn.innerHTML = saveIcon;
+  }else if(editBtn.innerHTML == saveIcon) {
+    data = data.map((item) => {
+      if(item.id == itemId) {
+        let editFieldValue = document.querySelector(".edit-input").textContent;
+        item.name = editFieldValue;
+      }
+      return item;
+    });
+    editFieldIsOpen = false;
+    showData(data);
+  }
+}
+
+function deleteAll() {
+    if(confirm("are you sure you want to delete all the items in the list ?")){
+      data = []
+      showData(data)
+    }
+}
+
+function showData(data) {
+  let i = 0
+  
+
+  listItem.innerHTML = data
+    .map((item) => {
+      ++i
+      return itemRow(item, i)
+    })
+    .join("")
+
+    totalItemsLabel.textContent = `Total : ${i}`
+
+    document.querySelectorAll(".delete-btn").forEach(removeBtn => {
+      removeBtn.addEventListener("click", deleteItem)
+    });
+
+    document.querySelectorAll(".edit-btn").forEach(editBtn => {
+      editBtn.addEventListener("click",  edit)
+    });
+}
+
+
+function itemRow({name,id}, listCount) {
+  return `
+  <li class="item-row" data-id="${id}" >
+    <div class="item-name-container">
+      <span>#${listCount}</span>
+      <p class="item-name">${name}</p>
+    </div>
+    <div class="actions-container">
+      <button class="edit-btn" data-id="${id}">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </button>
+      <button class="delete-btn" data-id="${id}" style="color: #f66;">
+      <i class="fa-solid fa-trash-can"></i></button>
+    </div>
+  </li>`;
+}
+
+
+// =========== Event handlers ==========//
+function handleSearchKeyup() {
+    const filtredData = support.search(data, searchBx.value)
+    showData(filtredData)
+}
+
+function handleKeypressToAdd(event) {
+    if (event.key === "Enter") {
+      inputField.focus();
+      addBtn.click();
+    }
+}
+
+function handleWindowCloseEditFeild (event){
+  if(!event.target.classList.contains("edit-btn") && 
+     !event.target.classList.contains("edit-input")) {
+
+    editFieldIsOpen = false;
+
+    showData(data);
+
+  }
+}
+// ========== Add Events ========== //
+
+
+// add item
+addBtn.addEventListener("click", add)
+// Add item with enter key
+window.addEventListener("keypress", handleKeypressToAdd);
+// search field
+searchBx.addEventListener("input", handleSearchKeyup)
+// Delete All items Button
+deleteAllBtn.addEventListener("click", deleteAll)
+// Close Edit field when the user click on the window
+window.addEventListener("click", handleWindowCloseEditFeild)

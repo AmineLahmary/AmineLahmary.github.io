@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gracery </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="alert">
+        <p class="alert-message">something wrong</p>
+    </div>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Grocery Bud</a>
+            <div >
+                <input type="text" class="search-bx" placeholder="search ...">
+            </div>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container">
+                <div class="group-fields">
+                    <input type="text" id="insert" class="insert-field" placeholder="Add item">
+                    <button class="save-btn">Add</button>
+                </div>
+                <ul class="list-item">
+                    <li class="item-row">
+                        <div class="check-all">
+                            <input type="checkbox" name="" id="">
+                        </div>
+                        <p class="item-name">egg</p>
+                        <div class="actions-container">
+                            <button class="edit-btn">edit</button>
+                            <button class="delete-btn">delete</button>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <p class="item-name"><input type="text" class="edit-input">test</p>
+                        <div class="actions-container">
+                            <button class="edit-btn">edit</button>
+                            <button class="delete-btn">delete</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="list-item-footer">
+                    <p class="total">
+                        Total 100
+                    </p>
+                    <div class="delete-all">
+                        Delete All
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="main.js" defer type="module"></script>
+</body>
+</html>
