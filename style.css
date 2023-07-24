@@ -1,0 +1,51 @@
+:root {
+    --space-s: clamp(1.5rem, calc(1.5rem + ((1vw - 0.32rem) * 1.1364)), 2.5rem);
+
+    --grid-2 : repeat(2, minmax(0,1fr));
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+header,
+section {
+    padding: 7rem var(--space-s);
+}
+
+h1 {
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.5em;
+}
+
+a {
+    margin-top: 2rem;
+    color: #111;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 1020px;
+    margin: auto;
+
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: var(--grid-2);
+}
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-s);
+}
+
+@media(max-width: 767px) {
+    .m-grid-1 {
+        grid-template-columns: 1fr;
+    }
+}
