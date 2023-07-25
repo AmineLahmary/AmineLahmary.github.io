@@ -47,6 +47,11 @@ function add() {
 
   } catch ({message,name}) {
 
+    inputField.parentElement.classList.add("animate__shakeX");
+    inputField.parentElement.addEventListener('animationend', () => {
+      inputField.parentElement.classList.remove('animate__shakeX');
+    });
+
     support.alertMessage(message, "error")
     
   }

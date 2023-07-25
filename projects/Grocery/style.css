@@ -104,7 +104,7 @@ header .header-container .search-bx:focus{
 
 .list-item {
     margin-top: 4rem;
-    max-height: 50vh;
+    max-height: 35vh;
     overflow-y: auto;
     width: 70%;
     margin: auto;
