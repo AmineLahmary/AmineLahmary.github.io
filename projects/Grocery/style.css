@@ -88,6 +88,10 @@ header .header-container .search-bx:focus{
     border: none;
 }
 
+.insert-field {
+    width: 100%;
+}
+
 .edit-input:focus,
 .insert-field:focus {
     outline: none;
@@ -104,7 +108,7 @@ header .header-container .search-bx:focus{
     overflow-y: auto;
     width: 70%;
     margin: auto;
-    padding: 0 2rem;
+    padding: 0 var(--space-s);
 }
 
 .list-item::-webkit-scrollbar {
@@ -162,8 +166,9 @@ header .header-container .search-bx:focus{
 }
 
 .item-name {
-    max-width: 30rem;
+    max-width: 20rem;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 .item-name-container {
@@ -281,12 +286,15 @@ header .header-container .search-bx:focus{
     }
 
     .list-item-footer  {
-        width: 95%;
+        width: 90%;
     }
     .list-item {
         width: 100%;
     }
-
+    .item-row {
+        margin: unset;
+        width: 95%;
+    }
     .actions-container {
         width: 25%;
     }

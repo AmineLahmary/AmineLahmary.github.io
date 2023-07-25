@@ -27,6 +27,7 @@ searchBx        = document.querySelector(".search-bx");
 showData(data);
 // add class edit-input to edit field (p tag)
 editField.classList.add("edit-input");
+editField.setAttribute("maxlength", "60")
 
 function add() {
 
