@@ -104,26 +104,19 @@ header .header-container .search-bx:focus{
 
 .list-item {
     margin-top: 4rem;
-    max-height: 35vh;
+    max-height: 50vh;
     overflow-y: auto;
     width: 70%;
     margin: auto;
     padding: 0 var(--space-s);
+    border: 1px solid #333;
+    border-radius: 3rem 3rem 0 0;
 }
 
 .list-item::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0rem;
 }
 
-.list-item::-webkit-scrollbar-track {
-    width: 0.5rem;
-    background-color: #555;
-}
-
-.list-item::-webkit-scrollbar-thumb  {
-    width: 0.5rem;
-    background-color: #333;
-}
 
 .item-row {
     display: flex;
@@ -181,6 +174,7 @@ header .header-container .search-bx:focus{
 .item-name-container span{
     margin-right: 2rem;
     opacity: 0.5;
+    cursor: move;
 }
 
 .edit-input {
@@ -193,16 +187,16 @@ header .header-container .search-bx:focus{
 }
 
 .list-item-footer {
-    width: 65%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    padding: var(--space-xs) var(--space-s);
+    padding: var(--space-s) var(--space-s);
     font-size: calc(var(--font-body) * 0.9);
-    margin-top: var(--space-s);
-    background-color: #212121;
-    border-radius: var(--rounded-full);
+    background-color: #222;
+    border: 1px solid #222;
+    border-radius: 0 0 3rem 3rem;
     color: #777;
 }
 .delete-all {
@@ -240,6 +234,13 @@ header .header-container .search-bx:focus{
     opacity: 1;
 }
 /* ALERT STYLE ENDS */
+
+
+/* Dragging Start */
+.dragging {
+    opacity: 0.3;
+}
+
 
 
 /* Mobile style */

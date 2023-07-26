@@ -1,5 +1,6 @@
 import * as support from "./support.js"
-import {Item} from "./itemClass.js"
+import {Item} from "./ItemClass.js"
+import dragRow from "./dragging.js"
 
 let 
 data = [
@@ -42,20 +43,30 @@ function add() {
 
     support.alertMessage('added successfully', "success")
     
-    listItem.append(item.itemInRow())
+    showData(data)
 
+    document.querySelectorAll(".delete-btn").forEach(removeBtn => {
+      removeBtn.addEventListener("click", deleteItem)
+    });
 
+    document.querySelectorAll(".edit-btn").forEach(editBtn => {
+      editBtn.addEventListener("click",  edit)
+    });
+
+    
+
+    dragRow(data).init()
+    
   } catch ({message,name}) {
 
-    inputField.parentElement.classList.add("animate__headShake");
+    inputField.parentElement.classList.add("animate__shakeX");
     inputField.parentElement.addEventListener('animationend', () => {
-      inputField.parentElement.classList.remove('animate__headShake');
+      inputField.parentElement.classList.remove('animate__shakeX');
     });
 
     support.alertMessage(message, "error")
     
   }
-  
 
 }
 
@@ -66,7 +77,7 @@ function deleteItem(e) {
   data = data.filter(item => item.id != itemId);
 
   showData(data);
-
+  dragRow(data).init()
 }
 
 function edit(e) {
@@ -74,22 +85,27 @@ function edit(e) {
   const itemId   = e.currentTarget.getAttribute("data-id"),
         itemName = document.querySelector(`[data-id='${itemId}'] .item-name`),
         editBtn  = document.querySelector(`[data-id='${itemId}'] .edit-btn`);
+
   if(!editFieldIsOpen) {
+    console.log(123)
     editFieldIsOpen = true;
     editField.textContent = itemName.innerHTML;
     editField.setAttribute("contenteditable",'')
     itemName.innerHTML = editField.outerHTML;
     editBtn.innerHTML = saveIcon;
+
   }else if(editBtn.innerHTML == saveIcon) {
     data = data.map((item) => {
-      if(item.id == itemId) {
-        let editFieldValue = document.querySelector(".edit-input").textContent;
+      if(item.itemId == itemId) {
+        console.log(data)
+        const editFieldValue = document.querySelector(".edit-input").textContent;
         item.name = editFieldValue;
       }
       return item;
     });
     editFieldIsOpen = false;
     showData(data);
+    dragRow(data).init()
   }
 }
 
@@ -104,10 +120,9 @@ function showData(data) {
   let i = 0
   
 
-  listItem.innerHTML = data
-    .map((item) => {
-      ++i
-      return itemRow(item, i)
+  listItem.innerHTML = data.map((item) => {
+      console.log(item)
+      return itemRow(item,i++)
     })
     .join("")
 
@@ -120,21 +135,22 @@ function showData(data) {
     document.querySelectorAll(".edit-btn").forEach(editBtn => {
       editBtn.addEventListener("click",  edit)
     });
+
 }
 
 
-function itemRow({name,id}, listCount) {
+function itemRow(item,index) {
   return `
-  <li class="item-row" data-id="${id}" >
+  <li class="item-row" data-id="${item.itemId}" draggable="true" data-index="${index}">
     <div class="item-name-container">
-      <span>#${listCount}</span>
-      <p class="item-name">${name}</p>
+      <span><i class="fa-solid fa-grip-vertical"></i></span>
+      <p class="item-name">${item.name}</p>
     </div>
     <div class="actions-container">
-      <button class="edit-btn" data-id="${id}">
+      <button class="edit-btn" data-id="${item.itemId}">
         <i class="fa-regular fa-pen-to-square"></i>
       </button>
-      <button class="delete-btn" data-id="${id}" style="color: #f66;">
+      <button class="delete-btn" data-id="${item.itemId}" style="color: #f66;">
       <i class="fa-solid fa-trash-can"></i></button>
     </div>
   </li>`;
@@ -142,9 +158,11 @@ function itemRow({name,id}, listCount) {
 
 
 // =========== Event handlers ==========//
+
 function handleSearchKeyup() {
     const filtredData = support.search(data, searchBx.value)
     showData(filtredData)
+    dragRow(data).init()
 }
 
 function handleKeypressToAdd(event) {
@@ -154,17 +172,22 @@ function handleKeypressToAdd(event) {
     }
 }
 
-function handleWindowCloseEditFeild (event){
-  if(!event.target.classList.contains("edit-btn") && 
-     !event.target.classList.contains("edit-input")) {
 
+function handleDocumentClick(event) {
+  const isEditBtn = event.target.classList.contains("edit-btn");
+  const isEditInput = event.target.classList.contains("edit-input");
+  const isSaveBtn = event.target.classList.contains("save-btn");
+  const isEditInputOpen = document.querySelector(".edit-input") || null
+
+  if (!isEditBtn && !isEditInput && !isSaveBtn && isEditInputOpen) {
     editFieldIsOpen = false;
-
-    showData(data);
-
+    showData(data)
   }
 }
-// ========== Add Events ========== //
+
+
+
+// ========== Events Listener ========== //
 
 
 // add item
@@ -176,4 +199,4 @@ searchBx.addEventListener("input", handleSearchKeyup)
 // Delete All items Button
 deleteAllBtn.addEventListener("click", deleteAll)
 // Close Edit field when the user click on the window
-window.addEventListener("click", handleWindowCloseEditFeild)
+document.addEventListener("click", handleDocumentClick)
