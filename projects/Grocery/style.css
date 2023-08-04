@@ -286,12 +286,11 @@ header .header-container .search-bx:focus{
         transform: translateY(0);
     }
 
+    .list-item,
     .list-item-footer  {
         width: 90%;
     }
-    .list-item {
-        width: 100%;
-    }
+    
     .item-row {
         margin: unset;
         width: 95%;
