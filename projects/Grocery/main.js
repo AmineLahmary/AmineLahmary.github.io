@@ -1,6 +1,6 @@
 import * as support from "./support.js"
 //import {Item} from "./ItemClasss.js"
-import {Item} from "./ItemClass.js"
+import {Item} from "./itemClass.js"
 import dragRow from "./dragging.js"
 
 let 
