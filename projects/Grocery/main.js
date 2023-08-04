@@ -97,7 +97,7 @@ function edit(e) {
 
   }else if(editBtn.innerHTML == saveIcon) {
     data = data.map((item) => {
-      if(item.itemId == itemId) {
+      if(item.id == itemId) {
         console.log(data)
         const editFieldValue = document.querySelector(".edit-input").textContent;
         item.name = editFieldValue;
