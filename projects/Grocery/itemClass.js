@@ -14,7 +14,7 @@ export class Item {
   }
 
   set name(name) {
-    if (!support.validate(name)) {
+    if (!support.validate(name.trim())) {
       throw new Error("Insert Field is not valid !");
     } else {
       this.#itemName = support.escape(name);
