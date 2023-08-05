@@ -139,7 +139,7 @@ header .header-container .search-bx:focus{
 .actions-container {
     width: 13%;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(0,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(3rem,1fr));
     gap: 1rem;
     margin-left: auto;
 }
@@ -152,6 +152,7 @@ header .header-container .search-bx:focus{
     background-color: #212121;
     width: 3.5rem;
     aspect-ratio: 1;
+    margin: auto;
 }
 
 .actions-container button i {
@@ -290,7 +291,7 @@ header .header-container .search-bx:focus{
     .list-item-footer  {
         width: 90%;
     }
-    
+
     .item-row {
         margin: unset;
         width: 95%;
