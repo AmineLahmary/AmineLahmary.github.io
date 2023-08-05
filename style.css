@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
 :root {
     --space-s: clamp(1.5rem, calc(1.5rem + ((1vw - 0.32rem) * 1.1364)), 2.5rem);
 
@@ -8,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 90vh;
+    font-family: 'Rubik', sans-serif;
 }
 
 section {
