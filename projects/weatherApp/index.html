@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+   
+</head>
+
+<body>
+
+    <div class="cart">
+        <div class="search">
+            <input type="text" class="search-input" placeholder="Enter city name" spellcheck="false">
+            <button>
+                <img src="./assets/images/search.svg" alt="">
+            </button>
+        </div>
+        <div class="cart-body">
+            <div id="svg"></div>
+            <div class="temperature">
+                <h1>22°c</h1>
+                <p class="city-name">
+                    Marrakech
+                </p>
+            </div>
+            <div class="weather-details">
+                <div>
+                    <img src="./assets/images/humidity.png" class="humidity-img" alt="humidity-image">
+                    <div>
+                        <span class="humidity-value">50%</span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="./assets/images/wind.png" class="wind-img" alt="wind-image">
+                    <div>
+                        <span class="wind-value">15 km/h</span>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"
+        integrity="sha512-jEnuDt6jfecCjthQAJ+ed0MTVA++5ZKmlUcmDGBv2vUI/REn6FuIdixLNnQT+vKusE2hhTk2is3cFvv5wA+Sgg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
