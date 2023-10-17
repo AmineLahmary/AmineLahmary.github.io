@@ -22,7 +22,9 @@ body {
     background-color: var(--bg-color);
 }
 
-
+main {
+    padding: 1.9rem;
+}
 
 .container {
     min-height: 100vh;
