@@ -63,7 +63,7 @@ body {
     font-size: 1.1em;
 }
 .app .insert-box button{
-    border: 2px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     background-color: var(--white-color);
     border-radius: 1rem 1rem 1rem 0;
     cursor: pointer;
@@ -72,9 +72,9 @@ body {
 }
 
 .app .items-container {
-    border-left: 2px solid var(--primary-color);
-    border-top: 2px solid var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    border-top: 3px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
     border-radius: 1rem 0 0 1rem;
     width: 100%;
     margin-top: -2px;
