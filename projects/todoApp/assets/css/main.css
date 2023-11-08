@@ -59,7 +59,7 @@ main {
     
 }
 .app .insert-box input {
-    padding: 0.3rem 1rem;
+    padding: 0.3rem 1rem; 
     position: relative;
     width: 100%;
     font-size: 1.1em;
