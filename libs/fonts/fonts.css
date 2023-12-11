@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'exo';
+    font-weight: 100;
+    src: url('./Exo2-Light.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'exo';
+    font-weight: 200;
+    src: url('./Exo2-Medium.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'exo';
+    font-weight: 300;
+    src: url('./Exo2-Regular.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'exo';
+    font-weight: 500;
+    src: url('./Exo2-SemiBold.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'exo';
+    font-weight: 700;
+    src: url('./Exo2-Thin.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Pinyon Script';
+    font-weight: 100;
+    src: url('./PinyonScript-Regular.woff2') format('woff2');
+}
+
+.exo2 {
+    font-family: 'exo', sans-serif;
+}
+.pinyon-script {
+    font-family: 'Pinyon Script', cursive;
+    font-weight: 100;
+    font-size: 2em;
+}
