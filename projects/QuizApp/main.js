@@ -108,7 +108,6 @@ function showQuestions() {
         button.textContent = answer.text
         button.classList.add('answer')
         answers.appendChild(button)
-        button.dataset.correct = answer.isCorrect
         button.addEventListener('click', selectAnswer)
     });
 }
@@ -121,7 +120,11 @@ function resetState() {
 }
 
 function selectAnswer(e) {
-    let answer = e.target.dataset.correct === "true"
+    function checkAnswer(answer) {
+        return answer.isCorrect && answer.text == e.target.textContent;
+    }
+    // let answer = e.target.dataset.correct === "true"
+    let answer = questions[currentQuestionIndex].answers.find(checkAnswer)
     if( answer ) {
         e.target.classList.add('correct')
         score++
@@ -129,11 +132,12 @@ function selectAnswer(e) {
         e.target.classList.add('incorrect')
     }
     Array.from(answers.children).forEach(answer => {
-        if(answer.dataset.correct == "true") {
-            answer.classList.add('correct')
-        }else if(answer.dataset.correct == "false") {
-            answer.disabled = true
-        }
+        questions[currentQuestionIndex].answers.find((an) => {
+            if(an.text == answer.textContent && an.isCorrect) {
+                answer.classList.add('correct')
+             }
+        } )
+        answer.disabled = true
     })
     nextBtn.style.display = "block"
 } 

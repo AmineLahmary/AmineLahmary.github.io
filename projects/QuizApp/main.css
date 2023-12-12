@@ -78,8 +78,8 @@ button {
     opacity: 1;
 }
 
-.quizapp .quiz .answer.correct:not(:disabled),
-.quizapp .quiz .answer.correct:not(:disabled):hover {
+.quizapp .quiz .answer.correct,
+.quizapp .quiz .answer.correct:hover {
     background-color: #9f9;
     box-shadow: none;
     color: black;
